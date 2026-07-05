@@ -1,3 +1,78 @@
+# 🏥 Hospital Management System
+
+A modern Hospital Management System frontend built with React.
+
+---
+
+## 🚀 Tech Stack
+
+- React
+- Vite
+- Tailwind CSS
+- React Router DOM
+- React Icons
+- Recharts
+- Axios
+- React Hook Form
+- SweetAlert2
+
+---
+
+## ✨ Features
+
+- Dashboard
+- Patient Management
+- Doctor Management
+- Appointment Management
+- Billing
+- Pharmacy
+- Reports
+- Responsive Design
+
+---
+
+## 📦 Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/AyeshaPerera2003/hospital-management-system-react.git
+```
+
+Go to the project
+
+```bash
+cd hospital-management-system-react
+```
+
+Install packages
+
+```bash
+npm install
+```
+
+Run the project
+
+```bash
+npm run dev
+```
+
+---
+
+## 👩‍💻 Developer
+
+**Ayesha Perera**
+
+Frontend Developer (React)
+
+
+
+
+
+
+
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
