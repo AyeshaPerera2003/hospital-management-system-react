@@ -1,5 +1,6 @@
 import DashboardCard from "../../components/dashboard/DashboardCard";
 import AppointmentChart from "../../components/charts/AppointmentChart";
+import RecentPatients from "../../components/tables/RecentPatients";
 
 import {
   FaUserInjured,
@@ -47,11 +48,16 @@ function Dashboard() {
         />
 
       </div>
+      <div className="mt-8">
+    <RecentPatients />
+</div>
 
       {/* Chart */}
       <AppointmentChart />
 
     </div>
+
+    
   );
 }
 
