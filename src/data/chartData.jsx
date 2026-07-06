@@ -14,3 +14,12 @@ export const departmentData = [
   { name: "Pediatrics", value: 18 },
   { name: "Emergency", value: 12 },
 ];
+
+export const revenueData = [
+  { month: "Jan", revenue: 12000 },
+  { month: "Feb", revenue: 15000 },
+  { month: "Mar", revenue: 18000 },
+  { month: "Apr", revenue: 22000 },
+  { month: "May", revenue: 20000 },
+  { month: "Jun", revenue: 25000 },
+];
