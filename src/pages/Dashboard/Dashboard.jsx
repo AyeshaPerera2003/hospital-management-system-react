@@ -1,6 +1,8 @@
 import DashboardCard from "../../components/dashboard/DashboardCard";
 import AppointmentChart from "../../components/charts/AppointmentChart";
 import RecentPatients from "../../components/tables/RecentPatients";
+import UpcomingAppointments from "../../components/dashboard/UpcomingAppointments";
+
 
 import {
   FaUserInjured,
@@ -52,13 +54,29 @@ function Dashboard() {
     <RecentPatients />
 </div>
 
-      {/* Chart */}
-      <AppointmentChart />
+<div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+  <div className="lg:col-span-2">
+    <AppointmentChart />
+  </div>
+
+  <UpcomingAppointments />
+
+</div>
+
+
+
+    
+      
 
     </div>
 
     
   );
 }
+
+     
+      
+      
 
 export default Dashboard;
