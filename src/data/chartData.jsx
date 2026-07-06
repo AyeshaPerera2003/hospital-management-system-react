@@ -8,8 +8,9 @@ export const appointmentData = [
 ];
 
 export const departmentData = [
-  { name: "Cardiology", value: 430 },
-  { name: "Neurology", value: 320 },
-  { name: "Orthopedics", value: 280 },
-  { name: "Pediatrics", value: 150 },
+  { name: "Cardiology", value: 35 },
+  { name: "Neurology", value: 20 },
+  { name: "Orthopedics", value: 15 },
+  { name: "Pediatrics", value: 18 },
+  { name: "Emergency", value: 12 },
 ];
