@@ -4,7 +4,7 @@ import RecentPatients from "../../components/tables/RecentPatients";
 import UpcomingAppointments from "../../components/dashboard/UpcomingAppointments";
 import DepartmentChart from "../../components/dashboard/DepartmentChart";
 import RevenueChart from "../../components/dashboard/RevenueChart";
-
+import TodaySchedule from "../../components/dashboard/TodaySchedule";
 
 
 
@@ -56,6 +56,16 @@ function Dashboard() {
 
       </div>
 
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+  <div className="lg:col-span-2">
+    <AppointmentChart />
+  </div>
+
+  <UpcomingAppointments />
+
+</div>
+
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
 
   <div className="lg:col-span-2">
@@ -70,15 +80,11 @@ function Dashboard() {
   <RevenueChart />
 </div>
 
-<div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-  <div className="lg:col-span-2">
-    <AppointmentChart />
-  </div>
-
-  <UpcomingAppointments />
-
+<div className="mt-8">
+  <TodaySchedule />
 </div>
+
+
 
 
 
