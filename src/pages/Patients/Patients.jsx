@@ -48,7 +48,11 @@ function Patients() {
         onClose={() => setIsModalOpen(false)}
         title="Add New Patient"
       >
-        <PatientForm />
+         <PatientForm
+    onSuccess={() => {
+      setIsModalOpen(false);
+    }}
+  />
       </Modal>
     </div>
     

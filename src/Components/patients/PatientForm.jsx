@@ -12,7 +12,7 @@ function PatientForm( {onSuccess}) {
   const onSubmit = (data) => {
     console.log(data);
 
-   onSuccess(data);
+   onSuccess?.(data);
 
    Swal.fire({
       icon: "success",
