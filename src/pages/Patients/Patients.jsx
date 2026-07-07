@@ -3,12 +3,14 @@ import { useState } from "react";
 import PatientTable from "../../components/patients/PatientTable";
 import SearchBar from "../../components/patients/SearchBar";
 import StatusFilter from "../../components/patients/StatusFilter";
+import Modal from "../../components/common/Modal";
 import PatientForm from "../../components/patients/PatientForm";
 
 
 function Patients() {
   const [search, setSearch] = useState("");
   const [status, setStatus] = useState("All");
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div>
@@ -17,8 +19,11 @@ function Patients() {
           Patients
         </h1>
 
-        <button className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-          + Add Patient
+        <button
+           onClick={() => setIsModalOpen(true)}
+           className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700"
+        >
+           + Add Patient
         </button>
       </div>
 
@@ -38,7 +43,13 @@ function Patients() {
         search={search}
         status={status}
       />
-      <PatientForm />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Add New Patient"
+      >
+        <PatientForm />
+      </Modal>
     </div>
     
   );

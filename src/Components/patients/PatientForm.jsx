@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
+ import Swal from "sweetalert2";
 
-function PatientForm() {
+function PatientForm( {onSuccess}) {
   const {
     register,
     handleSubmit,
@@ -11,21 +12,25 @@ function PatientForm() {
   const onSubmit = (data) => {
     console.log(data);
 
-    alert("Patient Added Successfully!");
+   onSuccess(data);
 
+   Swal.fire({
+      icon: "success",
+      title: "Patient Added",
+      text: "New patient added successfully.",
+      confirmButtonColor: "#2563EB",
+      });
+  
     reset();
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md p-6 mt-6">
-      <h2 className="text-2xl font-bold mb-6">
-        Add New Patient
-      </h2>
-
+    <div className="bg-white rounded-xl shadow-md p-6">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="grid grid-cols-1 md:grid-cols-2 gap-5"
       >
+    
         {/* Full Name */}
         <div>
           <label className="font-medium">
