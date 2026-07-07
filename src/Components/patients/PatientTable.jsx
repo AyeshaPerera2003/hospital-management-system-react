@@ -13,7 +13,7 @@ function PatientTable({search, status}) {
   return matchesSearch && matchesStatus;
 });
 
-
+ 
   return (
     <div className="bg-white rounded-xl shadow-md p-6 overflow-x-auto">
       <table className="w-full">
