@@ -3,6 +3,8 @@ import { useState } from "react";
 import PatientTable from "../../components/patients/PatientTable";
 import SearchBar from "../../components/patients/SearchBar";
 import StatusFilter from "../../components/patients/StatusFilter";
+import PatientForm from "../../components/patients/PatientForm";
+
 
 function Patients() {
   const [search, setSearch] = useState("");
@@ -36,8 +38,11 @@ function Patients() {
         search={search}
         status={status}
       />
+      <PatientForm />
     </div>
+    
   );
 }
+
 
 export default Patients;
