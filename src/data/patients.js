@@ -1,4 +1,4 @@
-const patients = [
+const initialPatients = [
   {
     id: 1,
     name: "John Smith",
@@ -7,6 +7,7 @@ const patients = [
     bloodGroup: "A+",
     phone: "0712345678",
     status: "Admitted",
+    address: "Colombo",
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ const patients = [
     bloodGroup: "O+",
     phone: "0771234567",
     status: "Under Treatment",
+    address: "Kandy",
   },
   {
     id: 3,
@@ -25,25 +27,8 @@ const patients = [
     bloodGroup: "B+",
     phone: "0769876543",
     status: "Discharged",
-  },
-  {
-    id: 4,
-    name: "Sophia Lee",
-    age: 31,
-    gender: "Female",
-    bloodGroup: "AB+",
-    phone: "0754567890",
-    status: "Admitted",
-  },
-  {
-    id: 5,
-    name: "Michael Davis",
-    age: 50,
-    gender: "Male",
-    bloodGroup: "O-",
-    phone: "0786543210",
-    status: "Under Treatment",
+    address: "Galle",
   },
 ];
 
-export default patients;
+export default initialPatients;

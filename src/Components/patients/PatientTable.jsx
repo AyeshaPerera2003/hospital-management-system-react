@@ -1,7 +1,7 @@
-import patients from "../../data/patients";
 import { FaEdit, FaTrash } from "react-icons/fa";
 
-function PatientTable({search, status}) {
+
+function PatientTable({ patients, search, status }) {
   const filteredPatients = patients.filter((patient) => {
   const matchesSearch = patient.name
     .toLowerCase()
@@ -11,7 +11,10 @@ function PatientTable({search, status}) {
     status === "All" || patient.status === status;
 
   return matchesSearch && matchesStatus;
+
+  
 });
+
 
  
   return (
