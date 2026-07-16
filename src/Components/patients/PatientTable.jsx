@@ -1,7 +1,8 @@
 import { FaEdit, FaTrash } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
-function PatientTable({ patients, search, status }) {
+function PatientTable({ patients, search, status, onEdit, onDelete }) {
   const filteredPatients = patients.filter((patient) => {
   const matchesSearch = patient.name
     .toLowerCase()
@@ -14,7 +15,28 @@ function PatientTable({ patients, search, status }) {
 
   
 });
+const handleDelete = async (patient) => {
+  const result = await Swal.fire({
+    title: "Delete Patient?",
+    text: `Are you sure you want to delete ${patient.name}?`,
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#dc2626",
+    cancelButtonColor: "#6b7280",
+    confirmButtonText: "Delete",
+  });
 
+  if (result.isConfirmed) {
+    onDelete(patient.id);
+
+    Swal.fire({
+      icon: "success",
+      title: "Deleted!",
+      text: "Patient deleted successfully.",
+      confirmButtonColor: "#2563EB",
+    });
+  }
+};
 
  
   return (
@@ -44,11 +66,17 @@ function PatientTable({ patients, search, status }) {
               <td>{patient.phone}</td>
               <td>{patient.status}</td>
               <td className="text-center space-x-3">
-                <button className="text-blue-600 hover:text-blue-800">
-                  <FaEdit />
-                </button>
+               <button
+  onClick={() => onEdit(patient)}
+  className="text-blue-600 hover:text-blue-800"
+>
+  <FaEdit />
+</button>
 
-                <button className="text-red-600 hover:text-red-800">
+                <button
+                  onClick={() => handleDelete(patient)}
+                  className="text-red-600 hover:text-red-800"
+                >
                   <FaTrash />
                 </button>
               </td>

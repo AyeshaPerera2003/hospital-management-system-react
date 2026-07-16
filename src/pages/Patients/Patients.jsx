@@ -21,24 +21,44 @@ function Patients() {
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // Add New Patient
-  const addPatient = (newPatient) => {
-  console.log("addPatient called");
-  console.log(newPatient);
+  // Edit Patient
+  const [editingPatient, setEditingPatient] = useState(null);
 
-  const patient = {
-    ...newPatient,
-    id: Date.now(),
+  // Add Patient
+  const addPatient = (newPatient) => {
+    const patient = {
+      ...newPatient,
+      id: Date.now(),
+    };
+
+    setPatients((prevPatients) => [...prevPatients, patient]);
+    setIsModalOpen(false);
   };
 
-  setPatients((prevPatients) => {
-    const updatedPatients = [...prevPatients, patient];
-    console.log(updatedPatients);
-    return updatedPatients;
-  });
+  // Update Patient
+  const updatePatient = (updatedPatient) => {
+    setPatients((prevPatients) =>
+      prevPatients.map((patient) =>
+        patient.id === updatedPatient.id ? updatedPatient : patient
+      )
+    );
 
-  setIsModalOpen(false);
-};
+    setEditingPatient(null);
+    setIsModalOpen(false);
+  };
+
+  // Open Edit Modal
+  const handleEdit = (patient) => {
+    setEditingPatient(patient);
+    setIsModalOpen(true);
+  };
+
+  // Delete Patient
+  const deletePatient = (id) => {
+    setPatients((prevPatients) =>
+      prevPatients.filter((patient) => patient.id !== id)
+    );
+  };
 
   return (
     <div>
@@ -49,7 +69,10 @@ function Patients() {
         </h1>
 
         <button
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => {
+            setEditingPatient(null);
+            setIsModalOpen(true);
+          }}
           className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition"
         >
           + Add Patient
@@ -74,16 +97,22 @@ function Patients() {
         patients={patients}
         search={search}
         status={status}
+        onEdit={handleEdit}
+        onDelete={deletePatient}
       />
 
-      {/* Add Patient Modal */}
+      {/* Modal */}
       <Modal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        title="Add New Patient"
+        onClose={() => {
+          setIsModalOpen(false);
+          setEditingPatient(null);
+        }}
+        title={editingPatient ? "Edit Patient" : "Add New Patient"}
       >
         <PatientForm
-          onSuccess={addPatient}
+          onSuccess={editingPatient ? updatePatient : addPatient}
+          editingPatient={editingPatient}
         />
       </Modal>
     </div>

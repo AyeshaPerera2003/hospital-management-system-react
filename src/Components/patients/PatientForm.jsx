@@ -1,22 +1,43 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 
 
-function PatientForm( {onSuccess}) {
+function PatientForm( {onSuccess , editingPatient} ) {
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm();
+
+  useEffect(() => {
+  if (editingPatient) {
+    setValue("id", editingPatient.id);
+    setValue("name", editingPatient.name);
+    setValue("age", editingPatient.age);
+    setValue("gender", editingPatient.gender);
+    setValue("bloodGroup", editingPatient.bloodGroup);
+    setValue("phone", editingPatient.phone);
+    setValue("status", editingPatient.status);
+    setValue("address", editingPatient.address);
+  } else {
+    reset();
+  }
+}, [editingPatient, setValue, reset]);
 
 const onSubmit = async (data) => {
   onSuccess?.(data);
 
   await Swal.fire({
     icon: "success",
-    title: "Patient Added",
-    text: "New patient added successfully.",
+    title: editingPatient
+      ? "Patient Updated"
+      : "Patient Added",
+    text: editingPatient
+      ? "Patient updated successfully."
+      : "New patient added successfully.",
     confirmButtonColor: "#2563EB",
   });
 
@@ -29,7 +50,10 @@ const onSubmit = async (data) => {
         onSubmit={handleSubmit(onSubmit)}
         className="grid grid-cols-1 md:grid-cols-2 gap-5"
       >
-    
+        <input
+  type="hidden"
+  {...register("id")}
+/>
         {/* Full Name */}
         <div>
           <label className="font-medium">
@@ -147,12 +171,11 @@ const onSubmit = async (data) => {
             className="w-full border rounded-lg p-2 mt-1"
           />
         </div>
-
-        <button
-          className="bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700"
-        >
-          Save Patient
-        </button>
+<button
+  className="bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700"
+>
+  {editingPatient ? "Update Patient" : "Save Patient"}
+</button>
       </form>
     </div>
   );
